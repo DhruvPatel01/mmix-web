@@ -1,0 +1,12 @@
+#main-container {
+    display: flex;
+    margin-top: 50px;
+}
+
+#editor-div {
+    flex-grow: 1;
+}
+
+#register-window {
+    padding: 20px;
+}

@@ -1,0 +1,30 @@
+<!doctype html>
+<meta charset=utf8>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.lime.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<h1>MMIX Debugger</h1>
+<button id="compile-btn">Compile</button>
+<button id="step-btn">Step</button>
+<button id="run-btn">Run</button>
+<div id="main-container">
+    <div id="editor-div"></div>
+    
+
+    <div id="register-window">
+        <table id="register-table">
+            <tr>
+                <th>Register</th>
+                <th>Value</th>
+            </tr>
+        </table>
+    </div>
+
+</div>
+<div id="output-area">
+    Output will be shown here
+</div>
+<div id="xterm-container"></div>
+<script src="editor.js" type="module"></script>
+
