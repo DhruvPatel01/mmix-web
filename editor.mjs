@@ -60,47 +60,14 @@ let command = "" // command to be submitted to MMIX interpreter
 let mmix_state = {
     initialized: false,
     mmix: undefined,
-    stdout_buffer: [],
-    stderr_buffer: [],
     loc_to_line: undefined,
-    next: false,
+    next_command: undefined,
 
     step: function() {
-        console.log("Hello there!");
-        // Send command to mmix
-
-        // capture the output
-    },
-
-    stdout: function(c) {
-        console.log(String.fromCharCode(c));
-        this.stdout_buffer.push(c);
-        console.log(String.fromCharCode(c));
-
-        console.log(String.fromCharCode(c), "=>", this.stdout_buffer.join(""));
-        // if (c == 10) {
-        //     console.log("Std Out Line: ", this.stdout_buffer.join(""));
-        //     this.stdout_buffer.length = 0;
-        // }
-    },
-
-    stderr: function(c) {
-        this.stderr_buffer.push(c);
-        if (c == 10) {
-            console.log("Std Err Line: ", this.stderr_buffer.join(""));
-            this.stderr_buffer.length = 0;
-        }
-
-    },
-
-    stdin: function() { 
-        console.log("Called stdin")
-        if (this.next) {
-            this.next = false;
-            return 10;
-        } else {
-            return null;
-        }
+        this.next_command("\n");
+        this.next_command = () => {
+            console.log("No input requested from MMIX interpreter. May be it is terminated?");
+        };
     }
 }
 
@@ -126,8 +93,7 @@ document.getElementById("compile-btn").addEventListener("click", (e) => {
             preRun: () => {
                 mmix_state.stderr_buffer = [];
                 mmix_state.stdout_buffer = [];
-                // MMIX_Module.FS.init(mmix_state.stdin, mmix_state.stdout, mmix_state.stderr);
-                MMIX_Module.FS.init(mmix_state.stdin, null, null);
+                MMIX_Module.FS.init(null, null, null);
             }
         }
 
@@ -143,18 +109,21 @@ document.getElementById("compile-btn").addEventListener("click", (e) => {
 });
 
 
-document.getElementById("step-btn").addEventListener("click", (e) => {
+let step_btn = document.getElementById("step-btn");
+step_btn.addEventListener("click", (e) => {
     if (mmix_state.mmix === undefined) {
         console.log("Please compile first");
     } else {
-        mmix_state.next = true;
+        step_btn.disabled = true;
+        mmix_state.step();
+        step_btn.disabled = false;
     }
 });
 
 
 function submit_command() {
     return new Promise((accept, reject)=>{
-	    accept(command + "\n");
+        mmix_state.next_command = accept;
     });
 }
 

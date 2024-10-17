@@ -9,11 +9,16 @@
 
 # Next Steps
 
-User clicks compile:
-    create an interpreter
+## Immediate
 
-interpreter has one method called step
+Step by step execution work flow.
+1. [x] Compile when click `compile`
+2. [x] When click on `next` go to next step, unless not already compiled
+   1. [x] if compiled, disable the button while exeuction is running
+   2. [x] print the output on console
+   3. [x] enable next button again
+3. [ ] show the output on html (stderr and stdout two boxes)
 
-when I call step
-    execute one instruction
-    and print it's output (to consoel for now)
+## After above (vague)
+- highlight the line which will be executed next
+- handle custom breakpoints

@@ -27432,7 +27432,7 @@ async function compile() {
 }
 var submit_command2 = function() {
   return new Promise((accept, reject) => {
-    accept(command2 + "\n");
+    mmix_state.next_command = accept;
   });
 };
 var hello_world_src = `     LOC		Data_Segment
@@ -27454,38 +27454,16 @@ var editor = new EditorView({
   state: state9,
   parent: document.getElementById("editor-div")
 });
-var command2 = "";
 var mmix_state = {
   initialized: false,
   mmix: undefined,
-  stdout_buffer: [],
-  stderr_buffer: [],
   loc_to_line: undefined,
-  next: false,
+  next_command: undefined,
   step: function() {
-    console.log("Hello there!");
-  },
-  stdout: function(c) {
-    console.log(String.fromCharCode(c));
-    this.stdout_buffer.push(c);
-    console.log(String.fromCharCode(c));
-    console.log(String.fromCharCode(c), "=>", this.stdout_buffer.join(""));
-  },
-  stderr: function(c) {
-    this.stderr_buffer.push(c);
-    if (c == 10) {
-      console.log("Std Err Line: ", this.stderr_buffer.join(""));
-      this.stderr_buffer.length = 0;
-    }
-  },
-  stdin: function() {
-    console.log("Called stdin");
-    if (this.next) {
-      this.next = false;
-      return 10;
-    } else {
-      return null;
-    }
+    this.next_command("\n");
+    this.next_command = () => {
+      console.log("No input requested from MMIX interpreter. May be it is terminated?");
+    };
   }
 };
 document.getElementById("compile-btn").addEventListener("click", (e) => {
@@ -27494,7 +27472,7 @@ document.getElementById("compile-btn").addEventListener("click", (e) => {
       preRun: () => {
         mmix_state.stderr_buffer = [];
         mmix_state.stdout_buffer = [];
-        MMIX_Module.FS.init(mmix_state.stdin, null, null);
+        MMIX_Module.FS.init(null, null, null);
       }
     };
     mmix_default(MMIX_Module).then((mmix2) => {
@@ -27505,11 +27483,14 @@ document.getElementById("compile-btn").addEventListener("click", (e) => {
     });
   });
 });
-document.getElementById("step-btn").addEventListener("click", (e) => {
+var step_btn = document.getElementById("step-btn");
+step_btn.addEventListener("click", (e) => {
   if (mmix_state.mmix === undefined) {
     console.log("Please compile first");
   } else {
-    mmix_state.next = true;
+    step_btn.disabled = true;
+    mmix_state.step();
+    step_btn.disabled = false;
   }
 });
 globalThis.editor = editor;
