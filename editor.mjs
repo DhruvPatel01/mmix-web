@@ -7,29 +7,6 @@ import MMIXAL from "./mmixal.js"
 import MMIX from "./mmix.js"
 import {parse_mmo} from "./mmix_object_reader.mjs"
 
-// preRun: function() {
-// 	function stdin() {
-// 	  if (i < res.length) {
-// 		var code = input.charCodeAt(i);
-// 		++i;
-// 		return code;
-// 	  } else {
-// 		return null;
-// 	  }
-// 	}
-
-// 	var stdoutBuffer = "";
-// 	function stdout(code) {
-// 	  if (code === "\n".charCodeAt(0) && stdoutBuffer !== "") {
-// 		console.log(stdoutBuffer);
-// 		stdoutBuffer = "";
-// 	  } else {
-// 		stdoutBuffer += String.fromCharCode(code);
-// 	  }
-// 	}
-
-
-// 	}
 
 
 let hello_world_src = `     LOC		Data_Segment
@@ -62,6 +39,8 @@ let mmix_state = {
     mmix: undefined,
     loc_to_line: undefined,
     next_command: undefined,
+    capture_stdout: true,
+    stdout_buffer: "",
 
     step: function() {
         this.next_command("\n");
@@ -85,6 +64,17 @@ async function compile() {
 }
 
 
+let stdout_area = document.getElementById("xterm-container")
+function stdout_fn(text) {
+    if (text == 10) {
+        let elem = document.createElement("div");
+        elem.innerHTML = mmix_state.stdout_buffer;
+        mmix_state.stdout_buffer = "";
+        stdout_area.appendChild(elem);
+    } else {
+        mmix_state.stdout_buffer += String.fromCodePoint(text);
+    }
+}
 
 document.getElementById("compile-btn").addEventListener("click", (e) => {
     compile().then((mmo_content) => {
@@ -93,7 +83,7 @@ document.getElementById("compile-btn").addEventListener("click", (e) => {
             preRun: () => {
                 mmix_state.stderr_buffer = [];
                 mmix_state.stdout_buffer = [];
-                MMIX_Module.FS.init(null, null, null);
+                MMIX_Module.FS.init(null, stdout_fn, null);
             }
         }
 

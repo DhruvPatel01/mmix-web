@@ -3,6 +3,10 @@
     margin-top: 50px;
 }
 
+#xterm-container div { 
+    font-family: 'Fira Code', Hack, 'Roboto Mono', monospace;
+}
+
 #editor-div {
     flex-grow: 1;
 }
@@ -10,3 +14,4 @@
 #register-window {
     padding: 20px;
 }
+

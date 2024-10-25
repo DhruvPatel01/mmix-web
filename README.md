@@ -1,3 +1,9 @@
+# How to Build
+- install emsdk
+- install texlive (or latex equivalent)
+- install mmix (I used nix-env)
+- install bun
+
 # Must TOOD
 - [ ] zebra stripes
 - [ ] integrate mmo decoder with step by step executioner
