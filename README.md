@@ -3,6 +3,8 @@
 - install texlive (or latex equivalent)
 - install mmix (I used nix-env)
 - install bun
+- after installing bun install codemirror
+   - run `bun add codemirror`
 
 # Must TOOD
 - [ ] zebra stripes

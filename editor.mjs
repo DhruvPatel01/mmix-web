@@ -3,8 +3,8 @@ import {indentWithTab,defaultKeymap} from "@codemirror/commands"
 import {EditorState} from "@codemirror/state"
 import {EditorView, keymap} from "@codemirror/view"
 
-import MMIXAL from "./mmixal.js"
-import MMIX from "./mmix.js"
+import MMIXAL from "./dist/mmixal.js"
+import MMIX from "./dist/mmix.js"
 import {parse_mmo} from "./mmix_object_reader.mjs"
 
 
@@ -33,6 +33,28 @@ let editor = new EditorView({
 
 let command = "" // command to be submitted to MMIX interpreter
 
+/**
+ * Update the register value
+ * @param {String} register_id e.g., "r0"
+ * @param {String} new_value e.g., "42"
+ * @returns {Bool} if old value is same as new value then false. Else  true.
+ */
+function update_reg(register_id, new_value) {
+    let row = document.getElementById(register_id);
+    let old_value = row.cells[1].innerHTML;
+    if (old_value != new_value) {
+        row.cells[1].innerHTML = new_value;
+        return true;
+    } else {
+        return false;
+    }
+}
+
+let all_regs = [];
+for (let i = 0; i <= 255; i++) all_regs.push("r" + i);
+for (let i = 65; i <= 90; i++) all_regs.push("r" + String.fromCharCode(i));
+for (let i of ['BB', 'TT', 'WW', 'XX', 'YY', 'ZZ']) all_regs.push("r" + i);
+
 
 let mmix_state = {
     initialized: false,
@@ -47,6 +69,15 @@ let mmix_state = {
         this.next_command = () => {
             console.log("No input requested from MMIX interpreter. May be it is terminated?");
         };
+    },
+
+    get_register_value: function(register, format) {
+        console.log(register);
+        return 42;
+    },
+
+    update_register_table: function(format="!", change_visibility=true) {
+        ;
     }
 }
 
@@ -78,7 +109,6 @@ function stdout_fn(text) {
 
 document.getElementById("compile-btn").addEventListener("click", (e) => {
     compile().then((mmo_content) => {
-
         let MMIX_Module = {
             preRun: () => {
                 mmix_state.stderr_buffer = [];

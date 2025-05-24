@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.lime.min.css">
+
+    <title>Document</title>
+    <style>
+        
+    </style>
+    <script>
+        
+    </script>
+</head>
+<body>
+    <div id="register-window">
+        <table id="register-table">
+            <thead>
+                <tr>
+                    <th>Register</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="hidden-reg" id="r0"><td>r0</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r1"><td>r1</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r2"><td>r2</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r3"><td>r3</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r4"><td>r4</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r5"><td>r5</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r6"><td>r6</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r7"><td>r7</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r8"><td>r8</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r9"><td>r9</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r10"><td>r10</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r11"><td>r11</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r12"><td>r12</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r13"><td>r13</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r14"><td>r14</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r15"><td>r15</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r16"><td>r16</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r17"><td>r17</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r18"><td>r18</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r19"><td>r19</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r20"><td>r20</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r21"><td>r21</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r22"><td>r22</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r23"><td>r23</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r24"><td>r24</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r25"><td>r25</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r26"><td>r26</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r27"><td>r27</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r28"><td>r28</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r29"><td>r29</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r30"><td>r30</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r31"><td>r31</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r32"><td>r32</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r33"><td>r33</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r34"><td>r34</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r35"><td>r35</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r36"><td>r36</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r37"><td>r37</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r38"><td>r38</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r39"><td>r39</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r40"><td>r40</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r41"><td>r41</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r42"><td>r42</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r43"><td>r43</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r44"><td>r44</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r45"><td>r45</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r46"><td>r46</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r47"><td>r47</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r48"><td>r48</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r49"><td>r49</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r50"><td>r50</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r51"><td>r51</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r52"><td>r52</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r53"><td>r53</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r54"><td>r54</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r55"><td>r55</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r56"><td>r56</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r57"><td>r57</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r58"><td>r58</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r59"><td>r59</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r60"><td>r60</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r61"><td>r61</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r62"><td>r62</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r63"><td>r63</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r64"><td>r64</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r65"><td>r65</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r66"><td>r66</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r67"><td>r67</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r68"><td>r68</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r69"><td>r69</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r70"><td>r70</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r71"><td>r71</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r72"><td>r72</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r73"><td>r73</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r74"><td>r74</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r75"><td>r75</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r76"><td>r76</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r77"><td>r77</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r78"><td>r78</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r79"><td>r79</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r80"><td>r80</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r81"><td>r81</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r82"><td>r82</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r83"><td>r83</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r84"><td>r84</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r85"><td>r85</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r86"><td>r86</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r87"><td>r87</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r88"><td>r88</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r89"><td>r89</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r90"><td>r90</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r91"><td>r91</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r92"><td>r92</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r93"><td>r93</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r94"><td>r94</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r95"><td>r95</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r96"><td>r96</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r97"><td>r97</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r98"><td>r98</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r99"><td>r99</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r100"><td>r100</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r101"><td>r101</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r102"><td>r102</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r103"><td>r103</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r104"><td>r104</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r105"><td>r105</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r106"><td>r106</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r107"><td>r107</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r108"><td>r108</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r109"><td>r109</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r110"><td>r110</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r111"><td>r111</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r112"><td>r112</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r113"><td>r113</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r114"><td>r114</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r115"><td>r115</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r116"><td>r116</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r117"><td>r117</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r118"><td>r118</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r119"><td>r119</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r120"><td>r120</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r121"><td>r121</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r122"><td>r122</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r123"><td>r123</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r124"><td>r124</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r125"><td>r125</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r126"><td>r126</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r127"><td>r127</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r128"><td>r128</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r129"><td>r129</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r130"><td>r130</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r131"><td>r131</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r132"><td>r132</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r133"><td>r133</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r134"><td>r134</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r135"><td>r135</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r136"><td>r136</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r137"><td>r137</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r138"><td>r138</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r139"><td>r139</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r140"><td>r140</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r141"><td>r141</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r142"><td>r142</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r143"><td>r143</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r144"><td>r144</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r145"><td>r145</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r146"><td>r146</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r147"><td>r147</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r148"><td>r148</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r149"><td>r149</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r150"><td>r150</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r151"><td>r151</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r152"><td>r152</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r153"><td>r153</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r154"><td>r154</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r155"><td>r155</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r156"><td>r156</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r157"><td>r157</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r158"><td>r158</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r159"><td>r159</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r160"><td>r160</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r161"><td>r161</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r162"><td>r162</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r163"><td>r163</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r164"><td>r164</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r165"><td>r165</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r166"><td>r166</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r167"><td>r167</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r168"><td>r168</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r169"><td>r169</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r170"><td>r170</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r171"><td>r171</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r172"><td>r172</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r173"><td>r173</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r174"><td>r174</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r175"><td>r175</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r176"><td>r176</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r177"><td>r177</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r178"><td>r178</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r179"><td>r179</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r180"><td>r180</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r181"><td>r181</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r182"><td>r182</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r183"><td>r183</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r184"><td>r184</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r185"><td>r185</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r186"><td>r186</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r187"><td>r187</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r188"><td>r188</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r189"><td>r189</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r190"><td>r190</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r191"><td>r191</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r192"><td>r192</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r193"><td>r193</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r194"><td>r194</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r195"><td>r195</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r196"><td>r196</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r197"><td>r197</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r198"><td>r198</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r199"><td>r199</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r200"><td>r200</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r201"><td>r201</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r202"><td>r202</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r203"><td>r203</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r204"><td>r204</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r205"><td>r205</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r206"><td>r206</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r207"><td>r207</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r208"><td>r208</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r209"><td>r209</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r210"><td>r210</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r211"><td>r211</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r212"><td>r212</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r213"><td>r213</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r214"><td>r214</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r215"><td>r215</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r216"><td>r216</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r217"><td>r217</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r218"><td>r218</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r219"><td>r219</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r220"><td>r220</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r221"><td>r221</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r222"><td>r222</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r223"><td>r223</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r224"><td>r224</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r225"><td>r225</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r226"><td>r226</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r227"><td>r227</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r228"><td>r228</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r229"><td>r229</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r230"><td>r230</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r231"><td>r231</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r232"><td>r232</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r233"><td>r233</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r234"><td>r234</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r235"><td>r235</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r236"><td>r236</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r237"><td>r237</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r238"><td>r238</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r239"><td>r239</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r240"><td>r240</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r241"><td>r241</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r242"><td>r242</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r243"><td>r243</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r244"><td>r244</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r245"><td>r245</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r246"><td>r246</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r247"><td>r247</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r248"><td>r248</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r249"><td>r249</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r250"><td>r250</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r251"><td>r251</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r252"><td>r252</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r253"><td>r253</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r254"><td>r254</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="r255"><td>r255</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rA"><td>rA</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rB"><td>rB</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rC"><td>rC</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rD"><td>rD</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rE"><td>rE</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rF"><td>rF</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rG"><td>rG</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rH"><td>rH</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rI"><td>rI</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rJ"><td>rJ</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rK"><td>rK</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rL"><td>rL</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rM"><td>rM</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rN"><td>rN</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rO"><td>rO</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rP"><td>rP</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rQ"><td>rQ</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rR"><td>rR</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rS"><td>rS</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rT"><td>rT</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rU"><td>rU</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rV"><td>rV</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rW"><td>rW</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rX"><td>rX</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rY"><td>rY</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rZ"><td>rZ</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rBB"><td>rBB</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rTT"><td>rTT</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rWW"><td>rWW</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rXX"><td>rXX</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rYY"><td>rYY</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+<tr class="hidden-reg" id="rZZ"><td>rZZ</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>
+            </tbody>
+        </table>
+    
+</body>
+</html>

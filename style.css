@@ -1,17 +1,20 @@
-#main-container {
-    display: flex;
-    margin-top: 50px;
-}
-
 #xterm-container div { 
     font-family: 'Fira Code', Hack, 'Roboto Mono', monospace;
+    overflow: scroll;
 }
 
 #editor-div {
-    flex-grow: 1;
+    margin-top: 10px;
 }
 
 #register-window {
-    padding: 20px;
+    height: 100vh;
+    resize: horizontal;
+    border: 10;
+    overflow: scroll;
+}
+
+.hidden-reg {
+    display: none;
 }
 

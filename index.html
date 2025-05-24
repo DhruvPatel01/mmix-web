@@ -1,0 +1,80 @@
+<!doctype html>
+<meta charset=utf8>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.lime.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="grid" id="main-container">
+        <div>
+            <h1>MMIX Debugger</h1>
+            <div>
+                <button id="compile-btn">Compile</button>
+                <button id="step-btn">Step</button>
+                <button id="run-btn">Run</button>
+            </div>
+            <div>
+                <div id="editor-div"></div>
+            </div>
+            <div id="output-area">
+                Output will be shown here
+                <div id="xterm-container"></div>
+            </div>
+
+        </div>
+        <div>
+            <div id="register-window">
+                <table id="register-table">
+                    <thead>
+                        <tr>
+                            <th>Register</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <script>
+                // Following code generates register table using javascript.
+                // I have considered just manually creating the table. But, I like this approach better.
+                // we are anyways using javascript for other things.
+                // see code in justfile to generate the table using Python.
+
+                function hideRow(button) {
+                    const row = button.closest("tr");
+                    row.classList.add("hidden-reg")
+                }
+
+                (function () {
+                    let table = document.getElementById("register-table");
+                    let tbody = table.getElementsByTagName('tbody')[0];
+
+                    let append_reg = function(reg_id) {
+                        const elem = `<tr  class="hidden-reg" id="r${reg_id}"><td>r${reg_id}</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>`
+                        tbody.insertAdjacentHTML("beforeend", elem);
+                    }
+                    
+                    for (let i = 0; i <= 255; i++) {
+                        append_reg(i);
+                    }
+
+                    for (let i = 65; i <= 90; i++) {
+                        append_reg(String.fromCharCode(i));
+                    }
+
+                    for (let reg of ['BB', 'TT', 'WW', 'XX', 'YY', 'ZZ']) {
+                        append_reg(reg);
+                    }
+
+                })();
+            </script>
+        </div>
+    </div>
+    
+    
+    <script src="editor.js" type="module"></script>
+</body>
