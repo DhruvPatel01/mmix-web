@@ -47,7 +47,7 @@ export function parse_mmo(bytes) {
                     break;
 
                 case 2: {
-                    const YZ = bytes[i + 2] << 8 | bytes[i + 3];
+                    const YZ = BigInt(bytes[i + 2] << 8 | bytes[i + 3]);
                     cur_address += YZ;
                     i += 4;
                 }

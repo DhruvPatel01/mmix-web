@@ -1,30 +1,38 @@
 <!doctype html>
-<meta charset=utf8>
-
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.lime.min.css">
+    <meta charset=utf8>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-    <div class="grid" id="main-container">
-        <div>
-            <h1>MMIX Debugger</h1>
-            <div>
+
+    <div id="main">
+        <div id="left" class="split">
+            <div class="header">
+                <h1>MMIX Debugger</h1>
+                <button id="show-load-github-btn">Load from GitHub</button>
                 <button id="compile-btn">Compile</button>
                 <button id="step-btn">Step</button>
                 <button id="run-btn">Run</button>
             </div>
-            <div>
+            <dialog id="load-github-dialog">
+              <input type="text" id="github-url" value="https://raw.githubusercontent.com/theartofcomputerprogramming/mmixsamples/refs/heads/main/loadstore.mms" placeholder="Enter GitHub URL" />
+              <button id="load-github-btn">Load</button>
+              <div id="github-error-box">
+
+              </div>
+            </dialog>
+            <div id="editor">
                 <div id="editor-div"></div>
             </div>
-            <div id="output-area">
-                Output will be shown here
-                <div id="xterm-container"></div>
+            <div id="terminal">
+                <textarea disabled id="the-terminal" placeholder="Terminal output..."></textarea>
             </div>
-
         </div>
-        <div>
+        <div id="right" class="split">
+          <div id="register-viewer">
+            <h3>Register Viewer</h3>
             <div id="register-window">
                 <table id="register-table">
                     <thead>
@@ -50,31 +58,74 @@
                 }
 
                 (function () {
-                    let table = document.getElementById("register-table");
-                    let tbody = table.getElementsByTagName('tbody')[0];
 
-                    let append_reg = function(reg_id) {
-                        const elem = `<tr  class="hidden-reg" id="r${reg_id}"><td>r${reg_id}</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>`
+                    let  make_table = function(id) {
+                      let table = document.getElementById(id);
+                      let tbody = table.getElementsByTagName('tbody')[0];
+                      return tbody;
+                    }
+
+                    let append_reg = function(tbody, reg_id) {
+                        const elem = `<tr  class="hidden-reg" id="reg${reg_id}"><td>r${reg_id}</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>`
                         tbody.insertAdjacentHTML("beforeend", elem);
                     }
+
+                    const tbody = make_table("register-table");
+
                     
                     for (let i = 0; i <= 255; i++) {
-                        append_reg(i);
+                        append_reg(tbody, i);
                     }
 
                     for (let i = 65; i <= 90; i++) {
-                        append_reg(String.fromCharCode(i));
+                        append_reg(tbody, String.fromCharCode(i));
                     }
 
                     for (let reg of ['BB', 'TT', 'WW', 'XX', 'YY', 'ZZ']) {
-                        append_reg(reg);
+                        append_reg(tbody, reg);
                     }
 
                 })();
             </script>
+          </div>
+          <div id="memory-viewer">
+          </div>
         </div>
     </div>
     
+    <script src="https://unpkg.com/split.js/dist/split.min.js"></script>  
+    <script src="dist/editor.js" type="module"></script>
+    <script>
+        Split(['#left', '#right'], {
+          sizes: [80, 20],
+          minSize: 200,
+          gutterSize: 8,
+        });
     
-    <script src="editor.js" type="module"></script>
+        Split(['#editor', '#terminal'], {
+          direction: 'vertical',
+          sizes: [70, 30],
+          minSize: 100,
+          gutterSize: 8,
+          elementStyle: (dimension, size, gutterSize) => ({
+            'flex-basis': `calc(${size}% - ${gutterSize}px)`
+          }),
+          gutterStyle: (dimension, gutterSize) => ({
+            'flex-basis': `${gutterSize}px`
+          })
+        });
+    
+        Split(['#register-viewer', '#memory-viewer'], {
+          direction: 'vertical',
+          sizes: [50, 50],
+          minSize: 100,
+          gutterSize: 8,
+          elementStyle: (dimension, size, gutterSize) => ({
+            'flex-basis': `calc(${size}% - ${gutterSize}px)`
+          }),
+          gutterStyle: (dimension, gutterSize) => ({
+            'flex-basis': `${gutterSize}px`
+          })
+        });
+      </script>
 </body>

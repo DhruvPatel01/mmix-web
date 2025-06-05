@@ -1,16 +1,63 @@
-#xterm-container div { 
-    font-family: 'Fira Code', Hack, 'Roboto Mono', monospace;
-    overflow: scroll;
-}
-
-#editor-div {
-    margin-top: 10px;
-}
-
-#register-window {
+html,
+body {
     height: 100vh;
-    resize: horizontal;
-    border: 10;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+#main {
+    height: 100vh;
+    display: flex;
+}
+
+.split {
+    overflow: auto;
+}
+
+/* Left column with code editor and terminal */
+#left {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Right column with register viewer and placeholder */
+#register-viewer,
+#memory-viewer {
+    padding: 8px;
+    height: 100%;
+}
+
+#register-viewer {
+    background-color: #f0f0f0;
+}
+
+#memory-viewer {
+    background-color: #fff;
+}
+
+.gutter {
+    background-color: #ccc;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.gutter.gutter-horizontal {
+    cursor: col-resize;
+}
+
+.gutter.gutter-vertical {
+    cursor: row-resize;
+}
+
+#terminal textarea {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #0f0;
+    font-family: monospace;
     overflow: scroll;
 }
 
@@ -18,3 +65,18 @@
     display: none;
 }
 
+#editor {
+    overflow: scroll;
+}
+
+.cm-editor {
+    height: 100%;
+}
+
+.cm-scroller {
+    overflow: auto;
+}
+
+.cm-highlight-line {
+    background-color: #fffa8b !important; /* yellowish for "next line" */
+  }

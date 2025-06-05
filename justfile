@@ -2,6 +2,10 @@ emcc_args := "-std=c99 -sINVOKE_RUN=0 -sEXPORT_ES6=1 -sENVIRONMENT=web -sMODULAR
 
 editor *args:
   bun build ./editor.mjs --outdir ./dist/ {{args}}
+
+dev:
+  tmux new-session -d -s dev 'python -m http.server' \; split-window -h 'open http://localhost:8000; just editor --watch' \; attach
+  
   
 mmixal:
   #!/bin/bash
