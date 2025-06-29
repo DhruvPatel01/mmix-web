@@ -18,7 +18,6 @@ Text	BYTE	"Hello world!",10,0
 Main	LDA		$255,Text
         TRAP	0,Fputs,StdOut
         TRAP	0,Halt,0
-
 `
 
 const setHighlightLine = StateEffect.define();
@@ -76,6 +75,7 @@ let mmix_state = {
         this.stdout_buffer = "";
         this.ready_for_next_action = true;
         mmix.FS.writeFile("./code.mmo", mmo_content, { encoding: "binary" });
+        stdout_area.innerHTML = "Compiled Successfully. You can now execute step by step.\n";
         mmix.callMain(["-i", "./code.mmo"]);
     },
 
@@ -172,7 +172,12 @@ let mmix_state = {
         return output.split('=').pop().split('\n')[0];
     },
 
-    update_register_table: async function (format = "!", change_visibility = true) {
+    update_register_table: async function (change_visibility = true) {
+        var format = "!";
+        const format_select = document.getElementById("register-format");
+        if (format_select.value === "#") {
+            format = "#";
+        }
         console.log("Updating registers with format:", format);
         const rL = parseInt(await this.get_register("rL", "!"));
         const rG = parseInt(await this.get_register("rG", "!"));
@@ -245,7 +250,7 @@ step_btn.addEventListener("click", async (e) => {
     } else {
         step_btn.disabled = true;
         await mmix_state.step();
-        await mmix_state.update_register_table("!", true);
+        await mmix_state.update_register_table(true);
         step_btn.disabled = false;
     }
 });
@@ -302,4 +307,16 @@ github_load_btn.addEventListener("click", async (e) => {
     } else {
         error_box.innerHTML = `Error loading file from GitHub: ${response.status} ${response.statusText}`;
     }
+});
+
+const resizeObserver = new ResizeObserver(() => {
+    editor.requestMeasure();
+});
+const editorElement = document.getElementById('editor-div');
+resizeObserver.observe(editorElement);
+
+
+const register_format_select = document.getElementById("register-format");
+register_format_select.addEventListener("change", async (e) => {
+    await mmix_state.update_register_table(false);
 });
