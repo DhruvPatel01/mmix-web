@@ -11,7 +11,7 @@ mmixal:
   #!/bin/bash
   cd mmixware
   make mmixal
-  mkdir ../dist
+  mkdir -p ../dist
   emcc {{emcc_args}} -sEXPORT_NAME=MMIXAL -o ../dist/mmixal.js mmixal.c mmix-arith.c
 
 mmix:
@@ -22,7 +22,7 @@ mmix:
   cp ../mmix-sim-aug.c ../mmix-sim.ch ./
   make mmix # it delets the abstime
   make abstime
-  mkdir ../dist
+  mkdir -p ../dist
   ./abstime > abstime.h
   emcc {{emcc_args}} -sASYNCIFY -sEXPORT_NAME=MMIX -o ../dist/mmix.js mmix-sim.c mmix-sim-aug.c mmix-arith.c mmix-io.c
   rm abstime.h mmix-sim-aug.c mmix-sim.ch

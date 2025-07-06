@@ -1,135 +1,167 @@
 <!doctype html>
+
 <head>
-    <meta charset=utf8>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="/style.css">
+  <meta charset=utf8>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
 
-    <div id="main">
-        <div id="left" class="split">
-            <div class="header">
-                <h1>MMIX Debugger</h1>
-                <button id="show-load-github-btn">Load from GitHub</button>
-                <button id="compile-btn">Compile</button>
-                <button id="step-btn">Step</button>
-                <button id="run-btn">Run</button>
-            </div>
-            <dialog id="load-github-dialog">
-              <input type="text" id="github-url" value="https://raw.githubusercontent.com/theartofcomputerprogramming/mmixsamples/refs/heads/main/loadstore.mms" placeholder="Enter GitHub URL" />
-              <button id="load-github-btn">Load</button>
-              <div id="github-error-box">
+  <div id="main">
+    <div id="left" class="split">
+      <div class="header">
+        <h1>MMIX Debugger</h1>
+        <button id="show-load-github-btn">Load from GitHub</button>
+        <button id="compile-btn">Compile</button>
+        <button id="step-btn">Step</button>
+        <button id="run-btn">Run</button>
+      </div>
+      <dialog id="load-github-dialog">
+        <input type="text" id="github-url"
+          value="https://raw.githubusercontent.com/theartofcomputerprogramming/mmixsamples/refs/heads/main/loadstore.mms"
+          placeholder="Enter GitHub URL" />
+        <button id="load-github-btn">Load</button>
+        <div id="github-error-box">
 
-              </div>
-            </dialog>
-            <div id="editor">
-                <div id="editor-div"></div>
-            </div>
-            <div id="terminal">
-                <textarea disabled id="the-terminal" placeholder="Terminal output..."></textarea>
-            </div>
         </div>
-        <div id="right" class="split">
-          <div id="register-viewer">
-            <h3>Register Viewer</h3>
-            <select id="register-format">
-              <option value="!">Decimal</option>
-              <option value="#">Hexadecimal</option>
-            </select>
-            <div id="register-window">
-                <table id="register-table">
-                    <thead>
-                        <tr>
-                            <th>Register</th>
-                            <th>Value</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-            </div>
-            <script>
-                // Following code generates register table using javascript.
-                // I have considered just manually creating the table. But, I like this approach better.
-                // we are anyways using javascript for other things.
-                // see code in justfile to generate the table using Python.
-
-                function hideRow(button) {
-                    const row = button.closest("tr");
-                    row.classList.add("hidden-reg")
-                }
-
-                (function () {
-
-                    let  make_table = function(id) {
-                      let table = document.getElementById(id);
-                      let tbody = table.getElementsByTagName('tbody')[0];
-                      return tbody;
-                    }
-
-                    let append_reg = function(tbody, reg_id) {
-                        const elem = `<tr  class="hidden-reg" id="reg${reg_id}"><td>r${reg_id}</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>`
-                        tbody.insertAdjacentHTML("beforeend", elem);
-                    }
-
-                    const tbody = make_table("register-table");
-
-                    
-                    for (let i = 0; i <= 255; i++) {
-                        append_reg(tbody, i);
-                    }
-
-                    for (let i = 65; i <= 90; i++) {
-                        append_reg(tbody, String.fromCharCode(i));
-                    }
-
-                    for (let reg of ['BB', 'TT', 'WW', 'XX', 'YY', 'ZZ']) {
-                        append_reg(tbody, reg);
-                    }
-
-                })();
-            </script>
-          </div>
-          <div id="memory-viewer">
-          </div>
-        </div>
+      </dialog>
+      <div id="editor">
+        <div id="editor-div"></div>
+      </div>
+      <div id="terminal">
+        <textarea disabled id="the-terminal" placeholder="Terminal output..."></textarea>
+      </div>
     </div>
-    
-    <script src="https://unpkg.com/split.js/dist/split.min.js"></script>  
-    <script src="dist/editor.js" type="module"></script>
-    <script>
-        Split(['#left', '#right'], {
-          sizes: [80, 20],
-          minSize: 200,
-          gutterSize: 8,
-        });
-    
-        Split(['#editor', '#terminal'], {
-          direction: 'vertical',
-          sizes: [70, 30],
-          minSize: 100,
-          gutterSize: 8,
-          elementStyle: (dimension, size, gutterSize) => ({
-            'flex-basis': `calc(${size}% - ${gutterSize}px)`
-          }),
-          gutterStyle: (dimension, gutterSize) => ({
-            'flex-basis': `${gutterSize}px`
-          })
-        });
-    
-        Split(['#register-viewer', '#memory-viewer'], {
-          direction: 'vertical',
-          sizes: [50, 50],
-          minSize: 100,
-          gutterSize: 8,
-          elementStyle: (dimension, size, gutterSize) => ({
-            'flex-basis': `calc(${size}% - ${gutterSize}px)`
-          }),
-          gutterStyle: (dimension, gutterSize) => ({
-            'flex-basis': `${gutterSize}px`
-          })
-        });
-      </script>
+    <div id="right" class="split">
+      <div id="register-viewer">
+        <h3>Register Viewer</h3>
+        <select id="register-format">
+          <option value="!">Decimal</option>
+          <option value="#">Hexadecimal</option>
+        </select>
+        <div id="register-window">
+          <table id="register-table">
+            <thead>
+              <tr>
+                <th>Register</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+        <script>
+          // Following code generates register table using javascript.
+          // I have considered just manually creating the table. But, I like this approach better.
+          // we are anyways using javascript for other things.
+          // see code in justfile to generate the table using Python.
+
+          function hideRow(button) {
+            const row = button.closest("tr");
+            row.classList.add("hidden-reg")
+          }
+
+          (function () {
+
+            let make_table = function (id) {
+              let table = document.getElementById(id);
+              let tbody = table.getElementsByTagName('tbody')[0];
+              return tbody;
+            }
+
+            let append_reg = function (tbody, reg_id) {
+              const elem = `<tr  class="hidden-reg" id="reg${reg_id}"><td>r${reg_id}</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>`
+              tbody.insertAdjacentHTML("beforeend", elem);
+            }
+
+            const tbody = make_table("register-table");
+
+
+            for (let i = 0; i <= 255; i++) {
+              append_reg(tbody, i);
+            }
+
+            for (let i = 65; i <= 90; i++) {
+              append_reg(tbody, String.fromCharCode(i));
+            }
+
+            for (let reg of ['BB', 'TT', 'WW', 'XX', 'YY', 'ZZ']) {
+              append_reg(tbody, reg);
+            }
+
+          })();
+        </script>
+      </div>
+      <div id="memory-viewer">
+        <h3>Memory</h3>
+        <select id="memory-format">
+          <option value="!">Decimal</option>
+          <option value="#">Hexadecimal</option>
+        </select>
+        <select id="memory-bytes">
+          <option value="1">1 Byte</option>
+          <option value="2">2 Bytes</option>
+          <option value="4">4 Bytes</option>
+          <option value="8">8 Bytes</option>
+        </select>
+        <div>
+          <p>Use Hex notation without any prefix for starting and ending address</p>
+          <input type="text" id="memory-address-start" value="4000000000000000"
+            placeholder="Enter Starting Address (Hex)" />
+          <input type="number" id="memory-address-count" value="128" placeholder="How many bytes to show" />
+          <button id="load-memory-btn">Load Memory</button>
+          <table>
+            <thead>
+              <tr>
+                <th>Address</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody id="memory-table-body">
+              <!-- Memory content will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/split.js/dist/split.min.js"></script>
+  <script src="dist/editor.js" type="module"></script>
+  <script>
+    Split(['#left', '#right'], {
+      sizes: [80, 20],
+      minSize: 200,
+      gutterSize: 8,
+    });
+
+    Split(['#editor', '#terminal'], {
+      direction: 'vertical',
+      sizes: [70, 30],
+      minSize: 100,
+      gutterSize: 8,
+      elementStyle: (dimension, size, gutterSize) => ({
+        'flex-basis': `calc(${size}% - ${gutterSize}px)`
+      }),
+      gutterStyle: (dimension, gutterSize) => ({
+        'flex-basis': `${gutterSize}px`
+      })
+    });
+
+    Split(['#register-viewer', '#memory-viewer'], {
+      direction: 'vertical',
+      sizes: [50, 50],
+      minSize: 100,
+      gutterSize: 8,
+      elementStyle: (dimension, size, gutterSize) => ({
+        'flex-basis': `calc(${size}% - ${gutterSize}px)`
+      }),
+      gutterStyle: (dimension, gutterSize) => ({
+        'flex-basis': `${gutterSize}px`
+      })
+    });
+  </script>
 </body>

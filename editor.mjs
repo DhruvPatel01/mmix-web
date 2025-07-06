@@ -10,6 +10,16 @@ import { parse_mmo } from "./mmix_object_reader.mjs"
 
 
 let hello_world_src = `     LOC		Data_Segment
+    OCTA #0
+    BYTE #01
+    BYTE #02
+    BYTE #03
+    BYTE #04
+    BYTE #10
+    BYTE #11
+    BYTE #12
+    BYTE #13
+
         GREG	@
 Text	BYTE	"Hello world!",10,0
 
@@ -149,19 +159,11 @@ let mmix_state = {
         if (line !== undefined) {
             highlightLine(line);
             const pos = editor.state.doc.line(line).from;
-            var should_scroll = true;
-            for (const range of editor.visibleRanges) {
-                if (pos >= range.from && pos <= range.to) {
-                    should_scroll = false;
-                }
-            }
-            if (should_scroll) {
-                editor.dispatch({
-                    effects: EditorView.scrollIntoView(pos, {
-                        y: "center",
-                    }),
-                });
-            }
+            editor.dispatch({
+                effects: EditorView.scrollIntoView(pos, {
+                    y: "center",
+                }),
+            });
         } else {
             removeHighlight();
         }
@@ -170,6 +172,25 @@ let mmix_state = {
     get_register: async function (register, format = "!") {
         const output = await this.send_command_with_output(`${register}${format}\n`);
         return output.split('=').pop().split('\n')[0];
+    },
+
+    get_memory: async function (start_address, count) {
+        var output = await this.send_command_with_output(`M${start_address}#\n`);
+        output = output.replace(/mmix> $/, '').trim() + "\n";
+        const remaining = Math.ceil((count - 8) / 8);
+        if (remaining > 0) {
+            output += await this.send_command_with_output(`+${remaining}#\n`);
+            output = output.replace(/mmix> $/, '').trim();
+        }
+        var result = [];
+        for (const substring of output.split("\n")) {
+            const octa = substring.split("=")[1].replace(/^#/, '');
+            const octa_padded = "0".repeat(16 - octa.length) + octa
+            for (let i = 0; i < 16; i += 2) {
+                result.push(parseInt(`0x${octa_padded.slice(i, i + 2)}`));
+            }
+        }
+        return result;
     },
 
     update_register_table: async function (change_visibility = true) {
@@ -194,7 +215,53 @@ let mmix_state = {
         for (let i = 0; i < rL; i++) await update(this, `reg${i}`, `$${i}`);
         for (let i = rG; i <= 255; i++) await update(this, `reg${i}`, `$${i}`);
         console.log("Registers updated");
+    },
+
+    update_memory_table: async function () {
+        const start_address = document.getElementById("memory-address-start").value;
+        const count = parseInt(document.getElementById("memory-address-count").value);
+        if (!address_valid(start_address) || count <= 0) {
+            console.log("Error parsing the start address!");
+            return;
+        }
+
+        const bytes = await this.get_memory(start_address, count);
+        const memory_table_tbody = document.getElementById("memory-table-body");
+        memory_table_tbody.innerHTML = "";
+
+        const format = document.getElementById("memory-format").value;
+        const bytes_per_element = parseInt(document.getElementById("memory-bytes").value);
+
+        for (let i = 0; i < bytes.length; i += 8) {
+            const row = document.createElement("tr");
+            const address = BigInt(`0x${start_address}`) + BigInt(i);
+            const address_td = document.createElement("td");
+            address_td.innerHTML = `#${address.toString(16).padStart(16, '0')}`;
+            row.appendChild(address_td);
+
+            var cell_content = "";
+            // we always return 8 bytes per row, so no error checking
+            for (let j = i; j < i + 8; j += bytes_per_element) {
+                let value = 0;
+                for (let k = 0; k < bytes_per_element; k++) {
+                    value = (value << 8) | bytes[j + k];
+                }
+                if (format === "!") {
+                    cell_content += " " + value.toString();
+                } else if (format === "#") {
+                    cell_content += " " + `#${value.toString(16).padStart(2 * bytes_per_element, '0')}`;
+                }
+            }
+            const value_td = document.createElement("td");
+            value_td.innerHTML = cell_content.trim();
+            row.appendChild(value_td);
+            memory_table_tbody.appendChild(row);
+        }
     }
+}
+
+function address_valid(address) {
+    return /^[0-9a-fA-F]+$/.test(address);
 }
 
 async function compile() {
@@ -251,6 +318,7 @@ step_btn.addEventListener("click", async (e) => {
         step_btn.disabled = true;
         await mmix_state.step();
         await mmix_state.update_register_table(true);
+        await mmix_state.update_memory_table();
         step_btn.disabled = false;
     }
 });
@@ -319,4 +387,17 @@ resizeObserver.observe(editorElement);
 const register_format_select = document.getElementById("register-format");
 register_format_select.addEventListener("change", async (e) => {
     await mmix_state.update_register_table(false);
+});
+
+const load_memory_btn = document.getElementById("load-memory-btn");
+const memory_format_select = document.getElementById("memory-format");
+const memory_bytes_select = document.getElementById("memory-bytes");
+memory_format_select.addEventListener("change", async (e) => {
+    await mmix_state.update_memory_table();
+});
+memory_bytes_select.addEventListener("change", async (e) => {
+    await mmix_state.update_memory_table();
+});
+load_memory_btn.addEventListener("click", async (e) => {
+    await mmix_state.update_memory_table();
 });

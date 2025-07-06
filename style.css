@@ -15,7 +15,8 @@ body {
 }
 
 /* Left column with code editor and terminal */
-#left {
+#left,
+#right {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -28,6 +29,7 @@ body {
 #memory-viewer {
     padding: 8px;
     height: 100%;
+    overflow: scroll;
 }
 
 #register-viewer {
@@ -36,6 +38,10 @@ body {
 
 #memory-viewer {
     background-color: #fff;
+}
+
+#memory-table-body {
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .gutter {
@@ -64,6 +70,7 @@ body {
 .hidden-reg {
     display: none;
 }
+
 /* 
 #editor {
     overflow: scroll;
@@ -72,12 +79,14 @@ body {
 #editor {
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* Changed from scroll */
+    overflow: hidden;
+    /* Changed from scroll */
 }
 
 #editor-div {
     flex: 1;
-    min-height: 0; /* Crucial for flex children */
+    min-height: 0;
+    /* Crucial for flex children */
 }
 
 .cm-editor {
@@ -88,8 +97,9 @@ body {
     flex: 1;
     overflow: auto;
     height: 100%;
-} */
+}
 
-.cm-highlight-line {
-    background-color: #fffa8b !important; /* yellowish for "next line" */
-  }
+*/ .cm-highlight-line {
+    background-color: #fffa8b !important;
+    /* yellowish for "next line" */
+}

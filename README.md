@@ -11,6 +11,18 @@
 - [ ] integrate mmo decoder with step by step executioner
 - [ ] integrate above with zebra stripes
 
+# Next Features to work on
+- [ ] file browser type interface for github repo
+https://github.com/theartofcomputerprogramming/mmixsamples
+- [ ] memory viewer
+- [ ] allow custom register to be printed
+- [ ] automatically show special registers as well
+- [ ] highlight the changed portion of the registers (for 2-5 seconds)
+
+# Features not supported yet/and not planned yet
+- [ ] command line arguments
+- [ ] standard input
+
 
 # Should TODO
 - [ ] handle line number directives
