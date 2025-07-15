@@ -12,12 +12,16 @@
 - [ ] integrate above with zebra stripes
 
 # Next Features to work on
-- [ ] file browser type interface for github repo
+- [x] file browser type interface for github repo
 https://github.com/theartofcomputerprogramming/mmixsamples
-- [ ] memory viewer
+- [x] memory viewer
+- [x] add premitive syntax highlight
+- [ ] add short lived register highlight for changed register
+- [ ] add form field to manually add back deleted register
+- [ ] add posibility to add more memory addresses
 - [ ] allow custom register to be printed
 - [ ] automatically show special registers as well
-- [ ] highlight the changed portion of the registers (for 2-5 seconds)
+- [ ] add support for breakpoints
 
 # Features not supported yet/and not planned yet
 - [ ] command line arguments

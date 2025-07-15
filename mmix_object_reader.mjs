@@ -40,7 +40,7 @@ export function parse_mmo(bytes) {
                         i += 8;
                     } else {
                         cur_address = Y + read_u64(bytes, i + 4);
-                        do_track =  (cur_address >>> BigInt(56)) !== BigInt(0)
+                        do_track = (cur_address >>> BigInt(56)) !== BigInt(0)
                         i += 12;
                     }
                 };
@@ -99,7 +99,7 @@ export function parse_mmo(bytes) {
             }
         } else {
             if (running_spec < 0 & do_track) { //Not  Special section 
-                loc_to_line[cur_address] = cur_line;
+                loc_to_line.set(cur_address, cur_line);
                 // console.log("Current address: ", cur_address.toString(16));
                 // console.log("Instruction OPCODE: ", bytes[i]);
                 // console.log("Current line number: ", cur_line);

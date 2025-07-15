@@ -15,7 +15,7 @@
         <button id="show-load-github-btn">Load from GitHub</button>
         <button id="compile-btn">Compile</button>
         <button id="step-btn">Step</button>
-        <button id="run-btn">Run</button>
+        <button id="continue-btn">Continue</button>
       </div>
       <dialog id="load-github-dialog">
         <input type="text" id="github-url"
@@ -77,9 +77,13 @@
       <div id="register-viewer">
         <h3>Register Viewer</h3>
         <select id="register-format">
-          <option value="!">Decimal</option>
           <option value="#">Hexadecimal</option>
+          <option value="!">Decimal</option>
         </select>
+        <div>
+          <input type="text" id="add-register" placeholder="rA" />
+          <button id="add-register-btn">Add Register</button>
+        </div>
         <div id="register-window">
           <table id="register-table">
             <thead>
@@ -113,7 +117,7 @@
             }
 
             let append_reg = function (tbody, reg_id) {
-              const elem = `<tr  class="hidden-reg" id="reg${reg_id}"><td>r${reg_id}</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>`
+              const elem = `<tr  class="hidden-reg" id="regr${reg_id}"><td>r${reg_id}</td><td>0</td><td><button class="contrast" onclick="hideRow(this)">x</button></td></tr>`
               tbody.insertAdjacentHTML("beforeend", elem);
             }
 
@@ -137,9 +141,17 @@
       </div>
       <div id="memory-viewer">
         <h3>Memory</h3>
+        <div>
+          <select id="memory-address-cache">
+            <option data-cacheHit=0 value="0">Text Segment</option>
+            <option data-cacheHit=0 value="2000000000000000">Data Segment</option>
+            <option data-cacheHit=0 value="4000000000000000">Pool Segment</option>
+            <option data-cacheHit=0 value="6000000000000000">Stack Segment</option>
+          </select>
+        </div>
         <select id="memory-format">
-          <option value="!">Decimal</option>
           <option value="#">Hexadecimal</option>
+          <option value="!">Decimal</option>
         </select>
         <select id="memory-bytes">
           <option value="1">1 Byte</option>
@@ -147,10 +159,10 @@
           <option value="4">4 Bytes</option>
           <option value="8">8 Bytes</option>
         </select>
+
         <div>
-          <p>Use Hex notation without any prefix for starting and ending address</p>
-          <input type="text" id="memory-address-start" value="4000000000000000"
-            placeholder="Enter Starting Address (Hex)" />
+          <p>Use Hex notation without any prefix for address</p>
+          <input type="text" id="memory-address-start" value="0" placeholder="Enter Starting Address (Hex)" />
           <input type="number" id="memory-address-count" value="128" placeholder="How many bytes to show" />
           <button id="load-memory-btn">Load Memory</button>
           <table>
@@ -159,8 +171,14 @@
                 <th>Address</th>
                 <th>Value</th>
               </tr>
+              <tr>
+                <td>
+
+                </td>
+              </tr>
             </thead>
             <tbody id="memory-table-body">
+
               <!-- Memory content will be populated here -->
             </tbody>
           </table>
@@ -173,7 +191,7 @@
   <script src="dist/editor.js" type="module"></script>
   <script>
     Split(['#left', '#right'], {
-      sizes: [80, 20],
+      sizes: [70, 30],
       minSize: 200,
       gutterSize: 8,
     });
