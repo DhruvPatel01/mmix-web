@@ -412,11 +412,17 @@ let mmix_state = {
             var cell_content = "";
             // we always return 8 bytes per row, so no error checking
             for (let j = i; j < i + 8; j += bytes_per_element) {
-                let value = 0;
+                let value = BigInt(0);
                 for (let k = 0; k < bytes_per_element; k++) {
-                    value = (value << 8) | bytes[j + k];
+                    value = (value << BigInt(8)) | BigInt(bytes[j + k]);
                 }
                 if (format === "!") {
+                    cell_content += " " + value.toString();
+                } else if (format === "~") {
+                    const bits = bytes_per_element * 8;
+                    if (value >= (1n << BigInt(bits - 1))) {
+                        value = value - (1n << BigInt(bits));
+                    }
                     cell_content += " " + value.toString();
                 } else if (format === "#") {
                     cell_content += " " + `#${value.toString(16).padStart(2 * bytes_per_element, '0')}`;

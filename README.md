@@ -6,6 +6,13 @@
 - after installing bun install codemirror
    - run `bun add codemirror`
 
+# Known Bugs
+- [ ] two columns for register viewer 
+- [ ] register viewer remove table view (takes too much space)
+- [ ] stick the hex/binary etc buttons on top 
+   - [ ] memory view
+   - [ ] register views    
+
 # Must TOOD
 - [ ] zebra stripes
 - [ ] integrate mmo decoder with step by step executioner
